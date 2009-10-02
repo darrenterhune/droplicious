@@ -1,0 +1,22 @@
+h1. Requirements==========
+
+    * prototype "prototype.js":http://prototypejs.org
+    * script.aculo.us "effects.js":http://script.aculo.us
+    * graphika studios "droplicious.js":http://github.com/darrenterhune/droplicious
+    * candy
+
+h1. Install==========
+
+    * code--git clone git://github.com/darrenterhune/droplicious.git
+    * throw it all in a shaker, er your website dir
+    * let it dry
+
+h1. Tested==========
+
+    * Mozilla Firefox 3.0+
+    * Safari 3.2+
+    * IE 6+
+
+h1.	Bugs==========
+
+		* Submit comments on my blog post: "droplicious":http://headfirstproductions.ca/prototype-and-scriptaculous-drop-down-menu

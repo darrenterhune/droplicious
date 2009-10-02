@@ -1,0 +1,128 @@
+/*
+droplicious v.1.0
+Copyright @2009 http://headfirstproductions.ca
+Darren Terhune
+Created May 21, 2009
+*/
+
+html{
+	overflow:scroll;
+}
+body{
+	background:#252525;
+	margin:0;
+	padding:0;
+	font-family:"Lucida Grande", Verdana, sans-serif;
+}
+a img, img{
+	border:none;
+}
+h1,h2,h3,h4,h5{
+	padding:5px 10px;
+	margin:0;
+}
+h3{
+	border-bottom:1px dotted #252525;
+}
+p{
+	margin:10px;
+	color:#333;
+}
+#content{
+	margin:0 10px 10px 10px;
+	background:#F4F2AF;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	-khtml-border-radius-topleft:5px;
+	-khtml-border-radius-topright:5px;
+	-khtml-border-radius-bottomleft:5px;
+	-khtml-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+}
+#container{
+	background:white;
+	width:790px;
+	margin:0 auto;
+}
+/* droplicous v1.1 */
+#nav ul.scriptaculously{
+	text-align:left;
+	width:150px;
+	font-size:.8em;
+	background:#444;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	-khtml-border-radius-bottomleft:5px;
+	-khtml-border-radius-bottomright:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	margin:0;
+	padding:0;
+	position:absolute;
+	left:0px;
+	top:28px;
+	opacity:.97;
+	filter:alpha(opacity=97);
+}
+html>body #nav ul.scriptaculously{/*ie shit*/
+	position:absolute;	
+	top:20px;
+}
+#nav ul.scriptaculously a:hover{
+	position:relative;
+	color:#84a743;
+	background:none;
+}
+#nav ul.scriptaculously a{
+	position:relative;
+	z-index:999;
+	font-weight:normal;
+	margin:0;
+	padding:5px 0 5px 10px;
+	background:none;
+	color:white;
+	display:block;
+	-webkit-border-top-left-radius:0;
+	-webkit-border-top-right-radius:0;
+	-khtml-border-radius-topleft:0;
+	-khtml-border-radius-topright:0;
+	-moz-border-radius-topleft:0;
+	-moz-border-radius-topright:0;
+}
+#nav li a:hover{
+	color:#555;
+}
+#nav li a{
+	font-weight:bold;
+	text-decoration:none;
+	color:white;
+	padding:10px 10px 0 10px;
+	background:#84a743;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-khtml-border-radius-topleft:5px;
+	-khtml-border-radius-topright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+}
+#nav{
+	position:relative;
+	width:820px;
+	text-align:center;
+	list-style:none;
+	margin:0 auto;
+	padding:0;
+	list-style:none;
+	font-size:1em;
+}
+#nav li{
+ 	position:relative;
+ 	display:inline;
+	margin:0;
+	padding:0;
+}
