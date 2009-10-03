@@ -2,7 +2,7 @@
 droplicious v.1.0
 Copyright @2009 http://headfirstproductions.ca
 Author: Darren Terhune
-Contributors: Jan Sovak http://canada-jack.com
+Contributors: Jan Sovak http://canada-jack.com, Mason Meyer http://www.masonmeyer.com/
 Created May 21, 2009
 */
 
