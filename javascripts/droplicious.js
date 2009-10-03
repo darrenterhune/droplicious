@@ -9,11 +9,13 @@ Created May 21, 2009
 var dropliciousShowingUpDuration = 0.3;
 var dropliciousHidingDuration = 0.1;
 var dropliciousHideDelay = 0;
+
 function dropliciousShowingUpEffect(dEl){
-	new Effect.BlindDown( $(dEl),  { duration: dropliciousShowingUpDuration });
+	 if(!Element.visible(dEl))
+	new Effect.BlindDown( $(dEl),  { duration: dropliciousShowingUpDuration, queue: {position: 'end', scope: dEl.id, limit:2} } );
 }
 function dropliciousHidingEffect(dEl){
-	new Effect.BlindUp( $(dEl),  { duration: dropliciousHidingDuration }); 
+	new Effect.BlindUp( $(dEl),  { duration: dropliciousHidingDuration, queue: {position: 'end', scope: dEl.id, limit:2 } });
 }
 function setDelayedHide(id){
 	$(id).addClassName('waitingtohide')
