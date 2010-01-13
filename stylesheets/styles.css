@@ -4,7 +4,6 @@ Copyright @2009 http://headfirstproductions.ca
 Darren Terhune
 Created May 21, 2009
 */
-
 html{
 	overflow:scroll;
 }
@@ -31,18 +30,9 @@ p{
 #content{
 	margin:0 10px 10px 10px;
 	background:#F4F2AF;
-	-webkit-border-top-left-radius:5px;
-	-webkit-border-top-right-radius:5px;
-	-webkit-border-bottom-left-radius:5px;
-	-webkit-border-bottom-right-radius:5px;
-	-khtml-border-radius-topleft:5px;
-	-khtml-border-radius-topright:5px;
-	-khtml-border-radius-bottomleft:5px;
-	-khtml-border-radius-bottomright:5px;
-	-moz-border-radius-topleft:5px;
-	-moz-border-radius-topright:5px;
-	-moz-border-radius-bottomleft:5px;
-	-moz-border-radius-bottomright:5px;
+	-webkit-border-radius:5px;
+	-khtml-border-radius:5px;
+	-moz-border-radius:5px;
 }
 #container{
 	background:white;
@@ -69,9 +59,10 @@ p{
 	opacity:.97;
 	filter:alpha(opacity=97);
 }
-html>body #nav ul.scriptaculously{/*ie shit*/
+/*ie shit*/
+html>body #nav ul.scriptaculously{
 	position:absolute;	
-	top:20px;
+	top:18px;
 }
 #nav ul.scriptaculously a:hover{
 	position:relative;
