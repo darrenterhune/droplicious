@@ -1,102 +1,120 @@
-/*
-droplicious v.1.0 Created May 21, 2009
-Copyright @2009 http://headfirstproductions.ca Author: Darren Terhune
-Contributors: Jan Sovak http://canada-jack.com,  Mason Meyer http://www.masonmeyer.com
-This software is licensed under the Creative Commons Attribution 2.5 Canada License 
-<http://creativecommons.org/licenses/by/2.5/ca//>
-*/
+// Droplicious v.3.0 Created May 21, 2009
+// Copyright @2009 http://headfirstproductions.ca Author: Darren Terhune
+// Contributors: Jan Sovak http://canada-jack.com,  Mason Meyer http://www.masonmeyer.com
+// This software is licensed under the Creative Commons Attribution 2.5 Canada License 
+// <http://creativecommons.org/licenses/by/2.5/ca//>
 
-var dropliciousShowingUpDuration = 0.3;
-var dropliciousHidingDuration = 0.1;
-var dropliciousHideDelay = 0;
+var dropliciousMenu = Class.create({
 
-function dropliciousShowingUpEffect(element){
-	if(!element.visible()){
-		new Effect.BlindDown(element, {
-			duration: dropliciousShowingUpDuration,
+	// Properties
+	showingUpDuration: 0.3,
+	hidingDuration: 0.1,
+	hideDelay: 0,
+
+	initialize: function(){
+		
+		$$("a.drops").invoke('observe', 'mousemove', this.linkMouseOver.bind(this));
+		$$("a.drops").invoke('observe', 'mouseout', this.linkMouseOut.bind(this));
+		
+		$$("ul.licious").invoke('observe', 'mousemove', this.submenuMouseOver.bind(this));
+		$$("ul.licious").invoke('observe', 'mouseout', this.submenuMouseOut.bind(this));
+		
+	},
+	
+	// Default Effects
+	// It's possible to set user's effects handlers
+	// eg: myDropliciousInstance.showUpEffect = function(){ * user's effect * };
+	showUpEffect: function(e, effectDuration){
+		if(!e.visible()){
+			new Effect.BlindDown(e, {
+				duration: effectDuration,
+				queue: {
+					position: 'end',
+					scope: e.identify(),
+					limit: 2
+				}
+			});
+		}
+	},
+
+	hidingEffect: function(e, effectDuration){
+		new Effect.BlindUp(e, {
+			duration: effectDuration,
 			queue: {
 				position: 'end',
-				scope: element.identify(),
-				limit:2
+				scope: e.identify(),
+				limit: 2
 			}
 		});
-	}
-}
+	},
 
-function dropliciousHidingEffect(element){
-	new Effect.BlindUp(element, {
-		duration: dropliciousHidingDuration,
-		queue: {
-			position: 'end',
-			scope: element.identify(),
-			limit: 2
+	// Mouse event handlers
+	linkMouseOut: function(e){
+		var dropElement = e.element().next();		
+		if (dropElement && dropElement.hasClassName('active')){
+			this.setDelayedHide(dropElement);
 		}
-	 });
-}
+	},
 
-function setDelayedHide(element){
-	element.addClassName('waitingtohide')
-	if(!element.hasClassName('hidding')){
-		if (!element.hasClassName('hiddingtimerset')){	
-			element.addClassName('hiddingtimerset');
-			setTimeout(function(){ delayedHide(element); }, dropliciousHideDelay * 1000);
+	linkMouseOver: function(e){
+		var dropElement = e.element().next();
+		// Additional check if something wrong with menu structure
+		if(!dropElement){
+			return;
 		}
-	}
-}
-function delayedHide(dropElement){
-	dropElement.removeClassName('hiddingtimerset');
-	if (dropElement.hasClassName('waitingtohide')){
-		dropliciousHidingEffect(dropElement);
-		dropElement.addClassName('hidding');
-		setTimeout(
-			function(){
-				dropElement.removeClassName('waitingtohide');
-				dropElement.removeClassName('hidding');
-				dropElement.removeClassName('active');
-			}, dropliciousHidingDuration * 1000);
-	}
-}
 
-function linkMouseOut(id){
-	var dropElement = id.element().next();		
-	if (dropElement && dropElement.hasClassName('active')){
-		setDelayedHide(dropElement);
-	}
-}
-function linkMouseOver(id){
-	var dropElement = id.element().next();
-	if(dropElement){
 		if (!dropElement.hasClassName('hidding')){
 			dropElement.removeClassName('waitingtohide');
 		}
+		
 		if (!dropElement.hasClassName('active')){
 			dropElement.addClassName('active');
-			dropliciousShowingUpEffect(dropElement);
+			this.showUpEffect(dropElement, this.showingUpDuration);
+		}
+	},
+
+	submenuMouseOut: function(e){
+		var dropElement = e.findElement("ul");	
+		if (dropElement && dropElement.hasClassName('active')){
+			this.setDelayedHide(dropElement);
+		}
+	},
+
+	submenuMouseOver: function(e){
+		var dropElement = e.findElement("ul");	
+		if (dropElement && !dropElement.hasClassName('hidding')){
+			dropElement.removeClassName('waitingtohide');
+		}
+	},
+
+	// Delayed  methods, needed for smooth subMenu hiding
+	setDelayedHide: function(e){
+		e.addClassName('waitingtohide')
+		if(!e.hasClassName('hidding')){
+			if (!e.hasClassName('hiddingtimerset')){	
+				e.addClassName('hiddingtimerset');
+				(function(obj, e){ obj.delayedHide(e); }).delay(this.hideDelay, this, e);
+			}
+		}
+	},
+
+	delayedHide: function(e){
+		e.removeClassName('hiddingtimerset');
+		if (e.hasClassName('waitingtohide')){
+			this.hidingEffect(e, this.hidingDuration);
+			e.addClassName('hidding');
+			//Changed to Prototype's API manner
+			(function(e){
+				e.removeClassName('waitingtohide');
+				e.removeClassName('hidding');
+				e.removeClassName('active');
+			}).delay(this.hidingDuration, e);
+
 		}
 	}
-}
-function submenuMouseOut(event){
-	var dropElement = event.findElement("ul");	
-	if (dropElement && dropElement.hasClassName('active')){
-		setDelayedHide(dropElement);
-	}
-}
 
-function submenuMouseOver(event){
-	var dropElement = event.findElement("ul");	
-	if (dropElement && !dropElement.hasClassName('hidding')){
-		dropElement.removeClassName('waitingtohide');
-	}
-}
+});
 
 document.observe('dom:loaded', function() {
-	$$('a.drops').each(function(name) {
-		name.observe('mousemove', linkMouseOver.bindAsEventListener(this));
-		name.observe('mouseout',  linkMouseOut.bindAsEventListener(this));
-	});
-
-	$$('ul.scriptaculously').each(function(name){
-		name.observe('mousemove', submenuMouseOver.bindAsEventListener(this));
-		name.observe('mouseout',  submenuMouseOut.bindAsEventListener(this));
-	});
+	new dropliciousMenu();
 })

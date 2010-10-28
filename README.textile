@@ -1,28 +1,34 @@
 h2. Requirements
 
-	* prototype "prototype.js":http://prototypejs.org
-	* script.aculo.us "effects.js":http://script.aculo.us
-	* graphika studios "droplicious.js":http://github.com/darrenterhune/droplicious
-	* candy
-
+	Prototype "prototype.js":http://prototypejs.org
+	Script.aculo.us "effects.js":http://script.aculo.us
+	Graphika studios "droplicious.js":http://github.com/darrenterhune/droplicious
+	A bit of html/css/js knowhow
+	
 h2. Install
 
-	* you can download all the needed files right from here
-	* <code>git clone git://github.com/darrenterhune/droplicious.git</code>
-	* throw it all in a shaker, er your website dir
-	* let it dry
+	You can download all the needed files right from here
+	<code>git clone git://github.com/darrenterhune/droplicious.git</code>
 
 h2. Tested
 
-	* Mozilla Firefox 3.0+
-	* Safari 3.2+
-	* IE 6+
+	Mozilla Firefox 3.0+
+	Google Chrome 4.0+
+	Safari 3.2+
+	IE 6+
 
 h2. Bugs
 
-	* Submit comments on my blog post: "droplicious":http://headfirstproductions.ca/prototype-and-scriptaculous-drop-down-menu
+	Submit issues on the project github issue page
 	
 h2. Contributors
 
-	* "Jan Sovak":http://canada-jack.com
-	* "Mason Meyer":http://www.masonmeyer.com/
+	"Jan Sovak":http://canada-jack.com
+	"Mason Meyer":http://www.masonmeyer.com
+	
+h2. Copyright
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	* _The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software._
+	* _The author's name shall be included in all copies or substaintial portions of the Software._
+	
